@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20160821221732) do
     t.integer  "apg"
     t.text     "sponsors"
     t.text     "shoes"
+    t.text     "nickname"
     t.text     "catchphrase"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
