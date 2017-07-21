@@ -9,8 +9,7 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-
-ActiveRecord::Schema.define(version: 2) do
+ActiveRecord::Schema.define(version: 20160821221732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +19,33 @@ ActiveRecord::Schema.define(version: 2) do
     t.integer  "user_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_examples_on_user_id", using: :btree
+  end
+
+  add_index "examples", ["user_id"], name: "index_examples_on_user_id", using: :btree
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "baller_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "favorites", ["baller_id"], name: "index_favorites_on_baller_id", using: :btree
+  add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
+
+  create_table "ballers", force: :cascade do |t|
+    t.text     "first_name"
+    t.text     "last_name"
+    t.text     "team"
+    t.text     "position"
+    t.integer  "buckets"
+    t.integer  "rpg"
+    t.integer  "apg"
+    t.text     "sponsors"
+    t.text     "shoes"
+    t.text     "catchphrase"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -29,9 +54,12 @@ ActiveRecord::Schema.define(version: 2) do
     t.string   "password_digest", null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
-    t.index ["token"], name: "index_users_on_token", unique: true, using: :btree
   end
 
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["token"], name: "index_users_on_token", unique: true, using: :btree
+
   add_foreign_key "examples", "users"
+  add_foreign_key "favorites", "ballers"
+  add_foreign_key "favorites", "users"
 end
