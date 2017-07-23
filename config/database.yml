@@ -1,4 +1,4 @@
-<% project_name = 'My Kickfinder' %>
+<% project_name = 'rails-api-template' %>
 
 default: &default
   adapter: postgresql
