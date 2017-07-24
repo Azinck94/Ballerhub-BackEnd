@@ -15,8 +15,8 @@ class BallersController < ApplicationController
 
   # POST /ballers
   def create
-    @baller = Baller.new(baller_params)
-
+    #@baller = Baller.new(baller_params)
+    @baller = current_user.ballers.build(baller_params)
     if @baller.save
       render json: @baller, status: :created, location: @baller
     else
