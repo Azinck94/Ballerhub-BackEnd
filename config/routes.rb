@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
   resources :examples, except: [:new, :edit]
   resources :brands, only: [:index, :show, :destroy, :update]
-  resources :ballers, only: [:index, :show, :destroy, :update]
+  resources :ballers, only: [:index, :create, :show, :destroy, :update]
 end
