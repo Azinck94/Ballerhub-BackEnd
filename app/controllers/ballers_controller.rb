@@ -6,6 +6,7 @@ class BallersController < OpenReadController
     @ballers = Baller.all
 
     render json: @ballers
+    # render json: current_user.ballers.all
   end
 
   # GET /ballers/1

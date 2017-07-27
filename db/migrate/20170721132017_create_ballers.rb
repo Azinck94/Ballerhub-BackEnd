@@ -11,6 +11,7 @@ class CreateBallers < ActiveRecord::Migration[5.0]
       t.string :sponsors
       t.string :shoes
       t.string :catchphrase
+      t.references :user, foreign_key: true
 
       t.timestamps
     end

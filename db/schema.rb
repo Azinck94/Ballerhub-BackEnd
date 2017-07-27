@@ -87,9 +87,5 @@ ActiveRecord::Schema.define(version: 20170723014932) do
   end
 
   add_foreign_key "examples", "users"
-  add_foreign_key "favorites", "ballers"
-  add_foreign_key "favorites", "users"
-  add_foreign_key "posts", "users"
-  add_foreign_key "teams", "ballers"
-  add_foreign_key "teams", "users"
+  add_foreign_key "ballers", "users"
 end
