@@ -31,10 +31,8 @@ ActiveRecord::Schema.define(version: 20170723014932) do
     t.string   "sponsors"
     t.string   "shoes"
     t.string   "catchphrase"
-    t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["user_id"], name: "index_recipes_on_user_id", using: :btree
   end
 
   create_table "comments", force: :cascade do |t|
@@ -51,6 +49,14 @@ ActiveRecord::Schema.define(version: 20170723014932) do
     t.index ["user_id"], name: "index_examples_on_user_id", using: :btree
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "baller_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["baller_id"], name: "index_favorites_on_baller_id", using: :btree
+    t.index ["user_id"], name: "index_favorites_on_user_id", using: :btree
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
@@ -61,7 +67,14 @@ ActiveRecord::Schema.define(version: 20170723014932) do
     t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
   end
 
-
+  create_table "teams", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "baller_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["baller_id"], name: "index_teams_on_baller_id", using: :btree
+    t.index ["user_id"], name: "index_teams_on_user_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false
@@ -74,5 +87,9 @@ ActiveRecord::Schema.define(version: 20170723014932) do
   end
 
   add_foreign_key "examples", "users"
-  add_foreign_key "ballers", "users"
+  add_foreign_key "favorites", "ballers"
+  add_foreign_key "favorites", "users"
+  add_foreign_key "posts", "users"
+  add_foreign_key "teams", "ballers"
+  add_foreign_key "teams", "users"
 end

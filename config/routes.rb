@@ -2,11 +2,13 @@
 Rails.application.routes.draw do
   resources :teams
   resources :posts
+  resources :brands
   post '/sign-up' => 'users#signup'
   post '/sign-in' => 'users#signin'
   delete '/sign-out/:id' => 'users#signout'
   patch '/change-password/:id' => 'users#changepw'
-  resources :users, only: [:create, :index, :show]
+  resources :users, only: [:index, :show]
   resources :examples, except: [:new, :edit]
+  resources :brands, only: [:index, :show, :destroy, :update]
   resources :ballers, only: [:index, :create, :show, :destroy, :update]
 end

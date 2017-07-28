@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class User < ApplicationRecord
   include Authentication
-  has_many :examples
-  has_many :ballers
+  has_many :ballers, through: :teams
+  has_many :teams
 end
