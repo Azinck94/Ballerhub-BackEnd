@@ -1,5 +1,8 @@
 #!/bin/bash
 
+EMAIL='Andrew_zinck@student.uml.edu'
+PASSWORD='ubxauqdb'
+
 API="${API_ORIGIN:-http://localhost:4741}"
 URL_PATH="/sign-in"
 curl "${API}${URL_PATH}" \

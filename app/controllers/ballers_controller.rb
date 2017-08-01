@@ -10,13 +10,15 @@ class BallersController < OpenReadController
 
   # GET /ballers/1
   def show
+      @ballers = Baller.find(params[:id])
     render json: @baller
   end
-
+#good
   # POST /ballers
   def create
-    @baller = Baller.new(baller_params)
-      # @baller = current_user.ballers.build(baller_params)
+    #@baller = Baller.new(baller_params)
+    @baller = current_user.ballers.build(baller_params)
+
     if @baller.save
       render json: @baller, status: :created, location: @baller
     else
@@ -41,8 +43,8 @@ class BallersController < OpenReadController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_baller
-       @baller = Baller.find(params[:id])
-      # @baller = current_user.ballers.find(params[:id])
+       #@baller = Baller.find(params[:id])
+       @baller = current_user.ballers.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
