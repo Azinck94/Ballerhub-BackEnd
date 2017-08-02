@@ -1,4 +1,4 @@
-class BallersController < OpenReadController
+class BallersController < ProtectedController
   before_action :set_baller, only: [:show, :update, :destroy]
 
   # GET /ballers
