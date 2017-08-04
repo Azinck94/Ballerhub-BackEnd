@@ -1,5 +1,5 @@
 class BallersController < OpenReadController
-  before_action :set_baller, only: [:show, :update, :destroy]
+  before_action :set_baller, only: [:update, :destroy]
 
   # GET /ballers
   def index
@@ -49,6 +49,6 @@ class BallersController < OpenReadController
 
     # Only allow a trusted parameter "white list" through.
     def baller_params
-      params.require(:baller).permit(:first_name, :last_name, :team, :position, :buckets, :rpg, :apg, :sponsors, :shoes, :catchphrase)
+      params.require(:baller).permit(:first_name, :last_name, :team, :position, :buckets, :rpg, :apg, :sponsors, :shoes, :catchphrase, :user_id)
     end
 end
